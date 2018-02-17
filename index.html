@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+var answers = ["Holy Open"
+,"Net na de competitie"
+,"Haal je de wedstrijdleiding erbij"
+,"TSN Open"
+,"Op het aller-,aller-,allerlaatste moment"
+,"WK Voetbal 2018"
+,"Ga je omwille van de sfeer en de voortgang toch verder"
+];
+var questionIndex = 0;
+var questions = 
+[
+"Beste tijd om in te schrijven voor Holy Open",
+"Dit doe je als je het niet eens kan worden of de bal in of uit was",
+"Het andere grote toernooi met de finale op 15 juli 2018",
+"Het grootste en sterkste toernooi in de Waterweg-Noord",
+"Het tijdstip waarop de meeste deelnemers inschrijven",
+"Dit doe je als je de loterij hebt gewonnen en je iedereen wilt laten meedelen in je nieuw gevonden rijkdom",
+"Populairste tijd om in te schrijven",
+"Het allerleukste toernooi in de regio",
+
+];
+    $( document ).ready(function() {
+	for(aindex=0;aindex<answers.length;aindex++)
+	{ 
+	  var s = "answer" + aindex.toString();
+	  console.log(s);
+	  var answerText = document.getElementById("answer" + aindex.toString());
+	  console.log(answerText);	  
+	  answerText.innerHTML = answers[aindex];
+	}
+
+    });
+	function nextQuestion() {
+	  questionIndex++;
+	  if(questionIndex<questions.length) {
+	  document.getElementById("vraag").innerHTML = questions[questionIndex];
+	  } 
+	}
+</script>
+</head>
+<body>
+<H1>Per seconde wijzer: Holy Open 2018</H1>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+	<H3>
+<div id="vraag">Beste tijd om in te schrijven voor Holy Open</div>
+</H3>
+<br>
+<br>
+</div>
+    <div class="col-sm-3">
+<form action="/action_page.php" method="get">
+  <input type="checkbox" onClick="nextQuestion()"><a id="answer0"></a><br>
+  <input type="checkbox" onClick="nextQuestion()"><a id="answer1"></a><br>
+  <input type="checkbox" onClick="nextQuestion()"><a id="answer2"></a><br>
+  <input type="checkbox" onClick="nextQuestion()"><a id="answer3"></a><br>
+  <input type="checkbox" onClick="nextQuestion()"><a id="answer4"></a><br>
+  <input type="checkbox" onClick="nextQuestion()"><a id="answer5"></a><br>
+  <input type="checkbox" onClick="nextQuestion()"><a id="answer6"></a><br>
+  <br>
+  <input type="submit" value="Check je antwoorden">
+</form>
+
+</div>
+</div>
+  <input type="checkbox"><a id="q0">Net na afloop van de competitie</a><br>
+  <input type="checkbox"><a id="q1">TSN Open<br>
+  <input type="checkbox"><a id="q2">Op het aller-,aller-,allerlaatste moment<br>
+  <input type="checkbox"><a id="q3">Holy Open<br>
+  <input type="checkbox"><a id="q4">Haal je de wedstrijdleiding erbij<br>
+  <input type="checkbox"><a id="q5">WK Voetbal 2018<br>
+  <input type="checkbox"><a id="q6">Ga je omwille van de sfeer en de voortgang toch verder<br>
+  <br>
+
+
+
+</body>
+</html>
