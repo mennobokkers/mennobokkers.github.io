@@ -78,35 +78,41 @@
 <script>
 var initialWord = "LP2O9HO1YNE0";
 var solution = "HOLYOPEN2019";
-var order = [1, 12, 2, 11];
-var letters = [3, 10, 6, 7];
-var toplist, bottomlist;
-var step = 0;
-var topbuttons;
     function KeyPressHappened(e)
     {
-      if (!e) e=window.event;
+      //if (!e) e=window.event;
+      var position = -1;
+      var positionCode = e.which || e.keyCode;
+      if (positionCode>=49 && positionCode<=57) {
+        position = positionCode - 49;
+      }
+      if (positionCode==48) {
+          position=9;
+      }
+      if (positionCode==45) {
+          position=10;
+      }
+      if (positionCode==61) {
+          position=11;
+      }
+      if (position>=0) {
+
       var buttons = document.getElementsByClassName("btn btn-primary");
       var solutionButtons = document.getElementsByClassName("btn btn-default");
-      buttons[order[step]-1].innerHTML = '-';
-      solutionButtons[letters[step]-1].innerHTML = solution.charAt(letters[step]-1);
-
-      /*
-      if (step = 1) document.getElementById("abc").innerHTML = 'X';
-      if (step = 2) document.getElementById("def").innerHTML = 'X';
-      if (step = 3) document.getElementById("abc").innerHTML = 'X';
-      if (step = 4) document.getElementById("abc").innerHTML = 'X';
-      */
-      step++;
+      var selectedButton = buttons[position];
+      var letter = selectedButton.innerHTML;
+      var targetPosition = solution.indexOf(letter);
+      // special case of letter appearing twice
+      if (solutionButtons[targetPosition].innerHTML == letter) {
+          targetPosition = solution.lastIndexOf(letter);
+      }
+      selectedButton.innterHTML = '-';
+      solutionButtons[targetPosition].innerHTML = solution.charAt(targetPosition);
+      }
     }
 
 
 function thefunction() {
-    topbuttons = document.getElementsByClassName("btn btn-primary");
-    topbuttons[0].innerHTML = 'Q';
-     for (sindex=0;sindex<initialWord.length;sindex++) {
-         topbuttons[sindex].innerHTML = initialWord.charAt(sindex);
-    }
 var video = document.querySelector("#videoElement");
 
 if (navigator.mediaDevices.getUserMedia) {
