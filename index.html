@@ -1,78 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-var answers = ["Holy Open"
-,"Net na de competitie"
-,"Haal je de wedstrijdleiding erbij"
-,"TSN Open"
-,"Op het aller-,aller-,allerlaatste moment"
-,"WK Voetbal 2018"
-,"Ga je omwille van de sfeer en de voortgang toch verder"
-];
-var questionIndex = 0;
-var questions = 
-[
-"Het grootste en sterkste toernooi in de Waterweg-Noord",
-"Populairste tijd om in te schrijven",
-"Dit doe je als je het niet eens kan worden of de bal in of uit was",
-"Het andere grote toernooi met de finale op 15 juli 2018",
-"Dit doe je als je de loterij hebt gewonnen en je iedereen wilt laten meedelen in je nieuw gevonden rijkdom",
-"Beste tijd om in te schrijven voor Holy Open",
-"Het allerleukste toernooi in de regio",
-];
-    $( document ).ready(function() {
-	for(aindex=0;aindex<answers.length;aindex++)
-	{ 
-	  var s = "answer" + aindex.toString();
-	  console.log(s);
-	  var answerText = document.getElementById("answer" + aindex.toString());
-	  console.log(answerText);	  
-	  answerText.innerHTML = answers[aindex];
-	}
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+    .btn {
+    width:32px;
+    height:32px;
+    padding:5px;
+    }
 
-    });
-	function nextQuestion() {
-	  questionIndex++;
-	  if(questionIndex<questions.length) {
-	  document.getElementById("vraag").innerHTML = questions[questionIndex];
-	  } 
-	}
-</script>
+#videoElement {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+.container {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+</style>
+
 </head>
 <body>
-<H1>Per seconde wijzer: Holy Open 2018</H1>
-<br>
-<br>
-<br>
-<br>
+<div id="videoContainer">
+    <video autoplay="true" id="videoElement">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3">
-	<H3>
-<div id="vraag">Beste tijd om in te schrijven voor Holy Open</div>
-</H3>
-<br>
-<br>
+    </video>
 </div>
-    <div class="col-sm-3">
-<form action="/action_page.php" method="get">
-  <input type="checkbox" onClick="nextQuestion()"><a id="answer0"></a><br>
-  <input type="checkbox" onClick="nextQuestion()"><a id="answer1"></a><br>
-  <input type="checkbox" onClick="nextQuestion()"><a id="answer2"></a><br>
-  <input type="checkbox" onClick="nextQuestion()"><a id="answer3"></a><br>
-  <input type="checkbox" onClick="nextQuestion()"><a id="answer4"></a><br>
-  <input type="checkbox" onClick="nextQuestion()"><a id="answer5"></a><br>
-  <input type="checkbox" onClick="nextQuestion()"><a id="answer6"></a><br>
-  <br>
-  <input value="Check je antwoorden">
-</form>
 
+<div class="container">
+    <h2>2 voor 12</h2>
+    <p></p>
+    <div>
+        <a href="#" class="btn btn-primary">L</a>
+        <a href="#" class="btn btn-primary">P</a>
+        <a href="#" class="btn btn-primary">2</a>
+        <a href="#" class="btn btn-primary">O</a>
+        <a href="#" class="btn btn-primary">9</a>
+        <a href="#" class="btn btn-primary">H</a>
+        <a href="#" class="btn btn-primary">O</a>
+        <a href="#" class="btn btn-primary">1</a>
+        <a href="#" class="btn btn-primary">Y</a>
+        <a href="#" class="btn btn-primary">N</a>
+        <a href="#" class="btn btn-primary">E</a>
+        <a href="#" class="btn btn-primary">0</a>
+    </div>
+    <p></p>
+    <div>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+        <a href="#" class="btn btn-default"></a>
+    </div>
 </div>
+
+
+<script>
+var initialWord = "LP2O9HO1YNE0";
+var solution = "HOLYOPEN2019";
+var order = [1, 12, 2, 11];
+var letters = [3, 10, 6, 7];
+var toplist, bottomlist;
+var step = 0;
+var topbuttons;
+    function KeyPressHappened(e)
+    {
+      if (!e) e=window.event;
+      var buttons = document.getElementsByClassName("btn btn-primary");
+      var solutionButtons = document.getElementsByClassName("btn btn-default");
+      buttons[order[step]-1].innerHTML = '-';
+      solutionButtons[letters[step]-1].innerHTML = solution.charAt(letters[step]-1);
+
+      /*
+      if (step = 1) document.getElementById("abc").innerHTML = 'X';
+      if (step = 2) document.getElementById("def").innerHTML = 'X';
+      if (step = 3) document.getElementById("abc").innerHTML = 'X';
+      if (step = 4) document.getElementById("abc").innerHTML = 'X';
+      */
+      step++;
+    }
+
+
+function thefunction() {
+    topbuttons = document.getElementsByClassName("btn btn-primary");
+    topbuttons[0].innerHTML = 'Q';
+     for (sindex=0;sindex<initialWord.length;sindex++) {
+         topbuttons[sindex].innerHTML = initialWord.charAt(sindex);
+    }
+var video = document.querySelector("#videoElement");
+
+if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({video: true})
+  .then(function(stream) {
+    video.srcObject = stream;
+  })
+  .catch(function(err0r) {
+    console.log("Something went wrong!");
+  });
+}
+}
+(function() {
+    document.onkeypress = KeyPressHappened;
+    thefunction();
+})();
+</script>
 
 </body>
 </html>
